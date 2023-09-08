@@ -5,8 +5,10 @@ const cors = require('cors');
 const db = require('knex')({
     client: 'pg',
     connection: {
-        port: 'postgresql-adjacent-39188',
-        ssl: true
+        connection: process.env.DATABASE_URL,
+        ssl: {
+            rejectUnauthorized: false
+        }
     }
 });
 
