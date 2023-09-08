@@ -21,7 +21,7 @@ const image = require('./controllers/image')
 
 const app = express();
 app.use(bodyParser.json());
-
+app.use(cors(res.header('Access-Control-Allow-Origin', '*')));
 
 app.get('/', (req, res) => {res.send('success');})
 
