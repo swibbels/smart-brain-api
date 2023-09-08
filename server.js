@@ -3,11 +3,13 @@ const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt-nodejs');
 const cors = require('cors');
 
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0
 
 const db = require('knex')({
+    DATABASE_URL: 'postgres://bxvgovjnsslpzg:772d520e790fd24b93f9ee4713a1d70bfe0e371295a69dbcc8bc85a0d17c7615@ec2-52-205-171-232.compute-1.amazonaws.com:5432/d22vvuhcdl1avh',
     client: 'pg',
     connection: {
-        connectionString: process.env.DATABASE_URL,
+        connection: db.DATABASE_URL,
         ssl: true
     }
 });
