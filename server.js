@@ -2,13 +2,14 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt-nodejs');
 const cors = require('cors');
+
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0
+
 const db = require('knex')({
     client: 'pg',
     connection: {
         connection: process.env.DATABASE_URL,
-        ssl: {
-            rejectUnauthorized: false
-        }
+        ssl: true
     }
 });
 
