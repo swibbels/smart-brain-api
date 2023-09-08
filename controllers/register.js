@@ -23,7 +23,7 @@ const handleRegister = (req, res, db, bcrypt) => {
             })
         })
         .then(res => {
-            res.header('Access-Control-Allow-Origin', '*')
+            res.header('Access-Control-Allow-Origin', 'http://localhost:3000')
         })
         .then(trx.commit)
         .catch(trx.rollback)
