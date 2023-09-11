@@ -11,9 +11,6 @@ const handleRegister = (req, res, db, bcrypt) => {
         })
         .into('login')
         .returning('email')
-        .then(res => {
-            res.header("Access-Control-Allow-Origin", "https://smart-brain-tmaq.onrender.com/")
-        })
         .then( loginEmail => {
             trx('users')
                 .returning('*')    
