@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt-nodejs');
 const cors = require('cors');
-
+/*
 const db = require('knex')({
     client: 'pg',
     connection: {
@@ -15,7 +15,7 @@ const db = require('knex')({
         database: process.env.DATABASE_DB
     }
 });
-
+*/
 const register = require('./controllers/register')
 const signIn = require('./controllers/signin')
 const profile = require('./controllers/profile')
