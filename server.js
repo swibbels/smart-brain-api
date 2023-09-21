@@ -17,10 +17,10 @@ const db = knex({
     }
 });
 
-import register from './controllers/register';
-import signIn from './controllers/signin';
-import profile from './controllers/profile';
-import image from './controllers/image';
+import register from './controllers/register.js';
+import signIn from './controllers/signin.js';
+import profile from './controllers/profile.js';
+import image from './controllers/image.js';
 
 
 const app = express();
