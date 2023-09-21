@@ -55,4 +55,4 @@ const handleImage = (req, res, db) => {
     .catch(error => res.status(400).json('unable to get entries'))
 }
 
-module.exports = { handleImage, handleApiCall }
+export default { handleImage, handleApiCall };

@@ -1,9 +1,9 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const bcrypt = require('bcrypt-nodejs');
-const cors = require('cors');
-const knex = require('knex');
-/*
+import express from 'express';
+import bodyParser from 'body-parser';
+import bcrypt from 'bcrypt-nodejs';
+import cors from 'cors';
+import knex from 'knex';
+
 const db = knex({
     client: 'pg',
     connection: {
@@ -16,11 +16,12 @@ const db = knex({
         database: process.env.DATABASE_DB
     }
 });
-*/
-const register = require('./controllers/register')
-const signIn = require('./controllers/signin')
-const profile = require('./controllers/profile')
-const image = require('./controllers/image')
+
+import register from './controllers/register';
+import signIn from './controllers/signin';
+import profile from './controllers/profile';
+import image from './controllers/image';
+
 
 const app = express();
 app.use(bodyParser.json());
@@ -38,7 +39,7 @@ app.put('/image', (req,res) => { image.handleImage(req, res, db) })
 
 app.post('/imageurl', (req,res) => { image.handleApiCall(req, res) }) 
 
-app.listen(process.env.PORT, () => {
+app.listen(process.env.PORT || 3000, () => {
     console.log(`app is running on port ${process.env.PORT}`);
 })
 
