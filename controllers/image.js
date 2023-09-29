@@ -40,7 +40,7 @@ const handleApiCall = (req, res) => {
         
 }
 
-fetch("https://api.clarifai.com/v2/models/" + "face-detection"  + "/outputs", requestOptions.IMAGE_URL)
+fetch("https://api.clarifai.com/v2/models/" + "face-detection"  + "/outputs", handleApiCall.requestOptions.IMAGE_URL)
         .then(response => response.json())
         .then(data => {
             res.json(data);})
