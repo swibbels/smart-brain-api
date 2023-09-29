@@ -2,7 +2,8 @@
   "name": "smart-brain-api",
   "version": "1.0.0",
   "description": "",
-  "main": "script.js",
+  "type": "module",
+  "main": "server.js",
   "scripts": {
     "start:dev": "nodemon server.js"
   },
@@ -20,6 +21,5 @@
     "knex": "^2.5.1",
     "node-fetch": "^3.3.2",
     "pg": "8.11.3"
-  },
-  "type": "module"
+  }
 }
