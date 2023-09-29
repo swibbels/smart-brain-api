@@ -33,16 +33,16 @@ const handleApiCall = (req, res) => {
     body: raw,
     
   };
-    fetch("https://api.clarifai.com/v2/models/" + "face-detection"  + "/outputs", requestOptions.IMAGE_URL)
-        .then(response => response.json())
-        .then(data => {
-            res.json(data);})
-        .catch(error => console.log('error', error));
+    
   return requestOptions 
         
 }
 
-
+fetch("https://api.clarifai.com/v2/models/" + "face-detection"  + "/outputs", requestOptions.IMAGE_URL)
+        .then(response => response.json())
+        .then(data => {
+            res.json(data);})
+        .catch(error => console.log('error', error));
 
 const handleImage = (req, res, db) => {
     const { id } =req.body;
