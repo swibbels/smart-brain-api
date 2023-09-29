@@ -1,3 +1,5 @@
+import fetch from "node-fetch";
+
 const handleApiCall = (req, res) => {
     
     const PAT = 'e02b6dbaeb984a5abe3a3d07c21df0d0';
