@@ -1,44 +1,44 @@
-import fetch from "node-fetch";
-
 const handleApiCall = (req, res) => {
     
     const PAT = 'e02b6dbaeb984a5abe3a3d07c21df0d0';
     const USER_ID = 'swibbels';       
-    const APP_ID = 'SmartBrain'; 
+    const APP_ID = 'SmartBrain';
+    const MODEL_ID = 'face-detection';
     const IMAGE_URL = req.body.input;
     
-    const raw = JSON.stringify({
-      "user_app_id": {
-        "user_id": USER_ID,
-        "app_id": APP_ID
-      },
-        "inputs": [
-            {
-                "data": {
-                    "image": {
-                        "url": IMAGE_URL
-                    }
-                }
-            }
-        ]
-  });
+    const { ClarifaiStub, grpc } = require("clarifai-nodejs-grpc");
+
+    const stub = ClarifaiStub.grpc();
     
-    const requestOptions = {
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Key ' + PAT
-    },
-    body: raw,   
-  }; 
+    const metadata = new grpc.Metadata();
+    metadata.set("authorization", "Key " + PAT);
+    
+    stub.PostModelOutputs(
+        {
+            user_app_id: {
+                "user_id": USER_ID,
+                "app_id": APP_ID
+            },
+            model_id: MODEL_ID,
+            inputs: [
+                { data: { image: { url: IMAGE_URL, allow_duplicate_url: true } } }
+            ]
+        },
+        metadata,
+        (err, response) => {
+            if (err) {
+                throw new Error(err);
+            }
+    
+            if (response.status.code !== 10000) {
+                throw new Error("Post model outputs failed, status: " + response.status.description);
+            }
 
-    fetch("https://api.clarifai.com/v2/models/" + "face-detection"  + "/outputs", requestOptions.IMAGE_URL)
-            .then(response => response.json())
-            .then(data => {
-                res.json(data);})
-            .catch(error => console.log('error', error));     
+            const output = response.outputs[0];
+    
+        }
+    );
 }
-
 
 const handleImage = (req, res, db) => {
     const { id } =req.body;
