@@ -37,7 +37,7 @@ const handleApiCall = (req, res) => {
             }
 
             const output = response.outputs[0];
-    
+            res.json(response);
         }
     );
 }
