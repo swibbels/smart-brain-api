@@ -4,8 +4,7 @@ const handleApiCall = (req, res) => {
     
     const PAT = 'e02b6dbaeb984a5abe3a3d07c21df0d0';
     const USER_ID = 'swibbels';       
-    const APP_ID = 'SmartBrain';
-      
+    const APP_ID = 'SmartBrain'; 
     const IMAGE_URL = req.body.input;
     
     const raw = JSON.stringify({
@@ -23,8 +22,6 @@ const handleApiCall = (req, res) => {
             }
         ]
   });
-  
-  
     
     const requestOptions = {
     method: 'POST',
@@ -34,15 +31,16 @@ const handleApiCall = (req, res) => {
     },
     body: raw,
     
-  };
+  }; 
+    return requestOptions      
+}
 
+handleApiCall(req) = () =>{
     fetch("https://api.clarifai.com/v2/models/" + "face-detection"  + "/outputs", requestOptions.IMAGE_URL)
         .then(response => response.json())
         .then(data => {
             res.json(data);})
         .catch(error => console.log('error', error));
-  
-    return requestOptions      
 }
 
 
