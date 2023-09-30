@@ -1,3 +1,5 @@
+import { ClarifaiStub, grpc } from "clarifai-nodejs-grpc";
+
 const handleApiCall = (req, res) => {
     
     const PAT = 'e02b6dbaeb984a5abe3a3d07c21df0d0';
@@ -6,7 +8,7 @@ const handleApiCall = (req, res) => {
     const MODEL_ID = 'face-detection';
     const IMAGE_URL = req.body.input;
     
-    const { ClarifaiStub, grpc } = require("clarifai-nodejs-grpc");
+    
 
     const stub = ClarifaiStub.grpc();
     
